@@ -1,0 +1,34 @@
+.cardlist-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cardlist-component h2 {
+    color: seashell;
+    margin-top: 0;
+    margin-bottom: 1.4rem;
+}
+
+.cardlist-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.cardlist-container li {
+    list-style: none;
+    width: 90vw;
+    height: 20vh;
+    background-color: rgb(229, 230, 162);
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: 0.15rem solid black;
+    border-radius: 1rem 1rem;
+}
+

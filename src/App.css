@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,77 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+html {
+  background-color: #dd2947;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 2rem;
+  -webkit-text-stroke: 0.15rem black;
+  color: #dfd21e;
+  text-shadow:
+      3px 3px 0 #000,
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+}
+
+.button-menu {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.one_dash,
+.two_dash,
+.three_dash {
+  display: block;
+  width: 2rem;
+  height: 0.2rem;
+  margin: 0.2rem;
+  background-color: #dfd21e;
+  border: 0.2rem solid black;
+  border-radius: 2rem 2rem;
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #dfd21e;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 10vh;
+  font-size: 2rem;
+  position: fixed;
+  bottom: 0px;;
+  z-index: 10;
+}
+
+.pagination li {
+  width: 10vw;
+  height: 7vh;
+  text-align: center;
+  border: 0.1rem solid black;
+  margin: 0.2rem;
+}
+
+
