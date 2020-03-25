@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-
 import { Button, Pagination } from 'antd';
 
 import Menu from './components/Menu/Menu';
@@ -11,15 +10,15 @@ function App() {
     <div className="App">
       <header>
         <h1>Find Your Pokemon</h1>
-        <Button>
-          <span></span>
-          <span></span>
-          <span></span>
+        <Button className='button-menu'>
+          <span className='one_dash'></span>
+          <span className='two_dash'></span>
+          <span className='three_dash'></span>
         </Button>
       </header>
       {/*<Menu />*/}
       <CardList />
-      <Pagination />
+      <Pagination className='pagination' defaultCurrent={1} total={50} />
     </div>
   );
 }
