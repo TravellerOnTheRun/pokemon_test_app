@@ -4,7 +4,6 @@ import { Button, Pagination } from 'antd';
 
 import Menu from './components/Menu/Menu';
 import CardList from './components/CardList/CardList';
-// import Pagination from './components/Pagination/Pagination';
 
 function App() {
   return (
