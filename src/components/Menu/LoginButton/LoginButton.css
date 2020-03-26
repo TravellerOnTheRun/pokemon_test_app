@@ -1,0 +1,9 @@
+.login_button-component {
+    width: 80vw;
+    height: 10vh;
+    text-align: center;
+}
+
+.login_button-component h2 {
+    font-weight: normal;
+}

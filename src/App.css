@@ -54,7 +54,7 @@ header {
 
 header h1 {
   font-size: 2rem;
-  -webkit-text-stroke: 0.15rem black;
+  -webkit-text-stroke: 0.15rem #000000;
   color: #dfd21e;
   text-shadow:
       3px 3px 0 #000,

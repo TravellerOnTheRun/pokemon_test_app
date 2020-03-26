@@ -1,0 +1,17 @@
+.menu-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-color: #e5e6a2;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80vw;
+    height: 100vh;
+    border-left: 0.1rem solid black;
+}
+
+.menu-component h2 {
+
+}

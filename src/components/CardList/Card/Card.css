@@ -1,0 +1,33 @@
+.card-component {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    width: 90vw;
+    height: 25vh;
+    background-color: #e5e6a2;
+    margin-left: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 2rem 2rem;
+    border: 0.2rem solid #6e6ec6;
+    box-shadow: 0rem 0.5rem 0.5rem black;
+}
+
+.pokemon_picture {
+    width: 20vw;
+    height: 15vh;
+}
+
+.card-container {
+    margin: 0;
+    padding: 0;
+}
+
+.card-container li {
+    list-style: none;
+    list-style: none;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
