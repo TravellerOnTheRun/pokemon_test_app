@@ -1,0 +1,10 @@
+.filters-component {
+    width: 80vw;
+    height: 40vh;
+    text-align: center;
+    background-color: #dd2947;
+}
+
+.filters-component h2 {
+    font-weight: normal;
+}

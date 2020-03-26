@@ -1,0 +1,39 @@
+.input-component {
+    width: 80vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.input_field {
+    margin: 0.5rem;
+    width: 70vw;
+    height: 10vh;
+    padding: 0.6rem;
+    background-color: #e5e6a2;
+    border: none;
+}
+
+.input_field::placeholder {
+    font-weight: bolder;
+    text-align: center;
+    font-size: large;
+}
+
+.input_field:focus {
+    outline: none;
+    background-color: #dfd21e;
+}
+
+.input_btn {
+    height: 6vh;
+    width: 70vw;
+    background-color: #6e6ec6;
+    border: none;
+    font-size: larger;
+    color: #e5e6a2;
+    margin-top: 1rem;
+    padding: 0.5rem;
+}

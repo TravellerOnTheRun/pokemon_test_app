@@ -4,7 +4,7 @@ import { Button, Pagination } from 'antd';
 
 import Menu from './components/Menu/Menu';
 import CardList from './components/CardList/CardList';
-// import Pagination from './components/Pagination/Pagination';
+
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <span className='three_dash'></span>
         </Button>
       </header>
-      {/*<Menu />*/}
+      < Menu />
       <CardList />
       <Pagination className='pagination' defaultCurrent={1} total={50} />
     </div>
