@@ -30,8 +30,9 @@
 .input_btn {
     height: 6vh;
     width: 70vw;
-    background-color: #6e6ec6;
+    background-color: #4c6fb3;
     border: none;
+    border-radius: 0.8rem 0.8rem;
     font-size: larger;
     color: #e5e6a2;
     margin-top: 1rem;
