@@ -6,7 +6,6 @@ import image from './images/Pokemon.png';
 import Menu from './components/Menu/Menu';
 import CardList from './components/CardList/CardList';
 
-
 function App() {
   return (
     <div className="App">
