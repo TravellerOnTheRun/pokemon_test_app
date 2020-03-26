@@ -20,7 +20,9 @@ function App() {
       </header>
       {/* < Menu /> */}
       <CardList/>
+      <div className='pagination-container'>
       <Pagination className='pagination' defaultCurrent={1} total={50} />
+      </div>
     </div>
   );
 }

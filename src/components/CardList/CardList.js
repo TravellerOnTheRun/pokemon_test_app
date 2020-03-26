@@ -42,7 +42,7 @@ export default props => {
     }, []);
 
     return (
-        <div>
+        <div className='cardlist-component'>
             {isLoading
                 ? ''
                 : pokemons.forEach(pokemon =>
