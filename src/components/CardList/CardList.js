@@ -44,6 +44,7 @@ export default props => {
                 stats={pokemon.stats}
                 image={pokemon.imageUrl}
             />)}
+
         </div>
     );
 };

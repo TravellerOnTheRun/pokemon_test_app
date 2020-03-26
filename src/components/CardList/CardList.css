@@ -1,5 +1,6 @@
 .cardlist-component {
-
+    width: 100vw;
+    height: 100vh;
 }
 
 .cardlist-component h2 {

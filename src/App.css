@@ -37,10 +37,12 @@
   }
 } */
 
+
+
 html {
   background-color: #dd2947;
   height: 100%;
-  width: 100%;
+  width: 100vw;
   margin: 0;
   padding: 0;
 }
@@ -48,14 +50,15 @@ html {
 header {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
 .pokemon_picture-header {
   height: 10vh;
   width: 70vw;
-  margin: 0.5rem;
+  margin-top: 0.5rem;
+  padding-left: 0rem;
 }
 
 header h1 {
@@ -89,6 +92,18 @@ header h1 {
   border-radius: 2rem 2rem;
 }
 
+.pagination-container {
+  display: block;
+  background-color: #dfd21e;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 10vh;
+  position: fixed;
+  bottom: 0px;;
+  z-index: 10;
+}
+
 .pagination {
   list-style: none;
   display: flex;
@@ -111,12 +126,12 @@ header h1 {
   height: 7vh;
   text-align: center;
   border: 0.1rem solid black;
-  margin: 0.2rem;
 }
 
 @media (min-width: 504px) {
   .pokemon_picture-header {
     width: 50vw;
+    background-origin: border-box;
   }
 }
 
@@ -124,5 +139,28 @@ header h1 {
   .pokemon_picture-header {
     width: 40vw;
   }
+
+  .pagination-container, 
+  .pagination {
+    height: 5vh;
+  }
+
+  .pagination li {
+    height: 5vh;
+    border: none;
+  }
+
 }
 
+@media (min-width: 1024px) {
+  .pokemon_picture-header {
+    width: 20vw;
+  }
+
+  .pagination {
+    width: 50vw;
+    margin-left: 20rem;
+}
+
+
+}
