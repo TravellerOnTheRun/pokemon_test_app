@@ -19,7 +19,7 @@ function App() {
         </Button>
       </header>
       {/* < Menu /> */}
-      <CardList />
+      <CardList/>
       <Pagination className='pagination' defaultCurrent={1} total={50} />
     </div>
   );
