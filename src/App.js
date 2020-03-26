@@ -16,8 +16,8 @@ function App() {
           <span className='three_dash'></span>
         </Button>
       </header>
-      < Menu />
-      <CardList />
+      {/* < Menu /> */}
+      <CardList/>
       <Pagination className='pagination' defaultCurrent={1} total={50} />
     </div>
   );
