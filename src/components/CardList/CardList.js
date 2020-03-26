@@ -4,7 +4,9 @@ import Card from './Card/Card';
 
 export default props => {
     return (
+        <div cardlist-component>
         <Card />
+        </div>
         // <div className='cardlist-component'>
         //     <h2>Here are Pokemons!</h2>
         //     <ul className='cardlist-container'>
