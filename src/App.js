@@ -9,11 +9,22 @@ import CardList from './components/CardList/CardList';
 import { PokemonContext } from './context/pokemon-context';
 
 function App() {
+  const [pokemons, setPokemons] = useState([]);
   const context = useContext(PokemonContext);
 
+  const filterPokemonsByNameHandler = filterValue => {
+    if(filterValue.trim().length === 0) {
+      return setPokemons(context.pokemons);
+    };
+    const filteredPokemons = pokemons.filter(pokemon => {
+      return pokemon.name.toLowerCase().includes(filterValue.toLowerCase());
+    });
+    setPokemons(filteredPokemons);
+  };
+
   useEffect(() => {
-      context.fetchPokes();
-  }, []);
+    setPokemons(context.pokemons);
+  }, [context.pokemons]);
 
   return (
     <div className="App">
@@ -26,8 +37,8 @@ function App() {
           <span className='three_dash'></span>
         </Button>
       </header>
-      < Menu />
-      <CardList pokemons={context.pokemons} />
+      <Menu filterPokesFn={filterPokemonsByNameHandler}/>
+      <CardList pokemons={pokemons}/>
       <div className='pagination-container'>
         <Pagination className='pagination' defaultCurrent={1} total={50} />
       </div>

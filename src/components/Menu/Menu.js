@@ -7,7 +7,7 @@ export default props => {
     return (
         <div className='menu-component'>
             <Login />
-            <Filters />
+            <Filters search={props.filterPokesFn}/>
             <h2>Menu Component</h2>
             <h2>Menu Component</h2>
             <h2>Menu Component</h2>
