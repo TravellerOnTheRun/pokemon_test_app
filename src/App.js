@@ -10,16 +10,19 @@ import { PokemonContext } from './context/pokemon-context';
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
+  const [showMenu, setShowMenu] = useState(false);
   const context = useContext(PokemonContext);
 
   const filterPokemonsByNameHandler = filterValue => {
-    if(filterValue.trim().length === 0) {
+    if (filterValue.trim().length === 0) {
+      setShowMenu(false);
       return setPokemons(context.pokemons);
     };
     const filteredPokemons = pokemons.filter(pokemon => {
       return pokemon.name.toLowerCase().includes(filterValue.toLowerCase());
     });
     setPokemons(filteredPokemons);
+    setShowMenu(false);
   };
 
   useEffect(() => {
@@ -30,17 +33,23 @@ function App() {
     <div className="App">
       <header>
         <img className='pokemon_picture-header' src={image} alt='pokemon_picture' />
-        {/* <h1>Find Your Pokemon</h1> */}
-        <Button className='button-menu'>
+        <Button className='button-menu' onClick={() => setShowMenu(prevState => !prevState)}>
           <span className='one_dash'></span>
           <span className='two_dash'></span>
           <span className='three_dash'></span>
         </Button>
       </header>
-      <Menu filterPokesFn={filterPokemonsByNameHandler}/>
-      <CardList pokemons={pokemons}/>
+      {
+        showMenu ? (
+          <div>
+            <div className='backdrop' onClick={() => setShowMenu(prevState => !prevState)}></div>
+            <Menu filterPokesFn={filterPokemonsByNameHandler} />
+          </div>
+        ) : null
+      }
+      <CardList pokemons={pokemons} />
       <div className='pagination-container'>
-        <Pagination className='pagination' defaultCurrent={1} total={50} />
+        <Pagination className='pagination' defaultCurrent={1} total={context.pokesTotal} />
       </div>
     </div>
   );
