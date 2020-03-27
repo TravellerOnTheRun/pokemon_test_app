@@ -7,7 +7,7 @@ const { Search } = Input;
 export default props => {
 
     const onSearchEnterHandler = value => {
-
+        props.search(value);
     };
 
     return (
