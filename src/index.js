@@ -4,10 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import PokemonContextProvider from './context/pokemon-context';
+
 ReactDOM.render(
-  <React.StrictMode>
+  <PokemonContextProvider>
     <App />
-  </React.StrictMode>,
+  </PokemonContextProvider>,
   document.getElementById('root')
 );
 
