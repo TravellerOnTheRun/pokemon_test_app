@@ -10,10 +10,10 @@ export default props => {
         <div className='card-component_closed-mobile card-component_opened-mobile'>
             <img className='pokemon_picture' src={props.image} alt='pokemon_picture' />
             <ul className='card-container'>
-                <li>{props.name}</li>
-                <li>Type: {props.types.map(t => <p>{t.type.name}</p>)}</li>
-                <li>Ability: {props.abilities.map(a => <p>{a.ability.name}</p>)}</li>
-                <li>Stats: {props.stats.map(s => <p>{s.stat.name}</p>)}</li>
+                <li>{props.name.toUpperCase()}</li>
+                <li>Type: <div className='wrapping'>{props.types.map(t => <p>{t.type.name}</p>)}</div></li>
+                <li>Ability: <div className='wrapping'>{props.abilities.map(a => <p>{a.ability.name}</p>)}</div></li>
+                <li>Stats: <div className='wrapping'>{props.stats.map(s => <p>{s.stat.name}</p>)}</div></li>
             </ul>
             <Button className='add-to-fav_btn' type="primary">
                 <img className='add-to-fav' src={icon} alt='pokemon_picture' />

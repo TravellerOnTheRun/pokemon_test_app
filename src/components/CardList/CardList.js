@@ -36,7 +36,7 @@ export default props => {
     }, []);
 
     return (
-        <div>
+        <div className='cardlist-component'>
             {pokemons.map(pokemon => <Card
                 name={pokemon.name}
                 types={pokemon.types}

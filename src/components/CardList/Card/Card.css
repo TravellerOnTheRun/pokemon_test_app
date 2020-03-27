@@ -1,4 +1,4 @@
-/* .card-component_closed-mobile {
+.card-component_closed-mobile {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
@@ -13,9 +13,9 @@
     border-radius: 2rem 2rem;
     border: 0.4rem solid #4c6fb3;
     box-shadow: 0rem 0.5rem 0.5rem black;
-} */
+}
 
-.card-component_opened-mobile {
+/* .card-component_opened-mobile {
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-around;
@@ -24,14 +24,14 @@
     height: 70vh;
     background-color: hsl(61, 58%, 77%);
     margin-left: 1rem;
-    margin-top: 6rem;
+    margin-top: 2rem;
     padding: 1rem;
     box-sizing: border-box;
     border-radius: 2rem 2rem;
     border: 0.4rem solid #4c6fb3;
     box-shadow: 0rem 0.5rem 0.5rem black;
     position: relative;
-}
+} */
 
 /* .card-component_closed-mobile .pokemon_picture  {
     width: 20vw;
@@ -44,22 +44,39 @@
 }
 
 .card-container {
-    margin: 0;
+    margin-top: 3rem;
     padding: 0;
     position: static;
+    text-align: left;
 }
 
 .card-container li {
     list-style: none;
-    list-style: none;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: underline;
+}
+
+.card-container li:first-child {
+    color: #4c6fb3;
+    font-size: larger;
+    text-align: center;
     font-weight: bolder;
 }
 
-.first {
+.card-container li p {
+    display: inline-block;
+    margin: 0 0.4rem;
+    font-weight: lighter;
+}
+
+.card-container li p:hover {
     color: #dd2947;
-    text-align: center;
-    margin-bottom: 1rem;
+}
+
+.wrapping {
+    display: block;
 }
 
 .layer {
@@ -98,12 +115,16 @@
 }
 
 @media (min-width: 780px) {
+
     .card-component_opened-mobile {
-        width: 50vw;
-        margin-left: 12rem;
+        width: 30vw;
+        margin-left: 4rem;
+        height: 25rem;
     }
 
     .card-component_opened-mobile .pokemon_picture {
         width: 40vw;
     }
+
+    
 }
