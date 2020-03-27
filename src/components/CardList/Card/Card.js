@@ -10,9 +10,9 @@ export default props => {
             <img className='pokemon_picture' src={props.image} alt='pokemon_picture' />
             <ul className='card-container'>
                 <li>{props.name.toUpperCase()}</li>
-                <li>Type: {props.types.map(t => <p key={t.type.name}>{t.type.name}</p>)}</li>
-                <li>Ability: {props.abilities.map(a => <p key={a.ability.name}>{a.ability.name}</p>)}</li>
-                <li>Stats: {props.stats.map(s => <p key={s.stat.name}>{s.stat.name}</p>)}</li>
+                <li>Type: <div className='wrapping'>{props.types.map(t => <p key={t.type.name}>{t.type.name}</p>)}</div></li>
+                <li>Ability: <div className='wrapping'>{props.abilities.map(a => <p key={a.ability.name}>{a.ability.name}</p>)}</div></li>
+                <li>Stats: <div className='wrapping'>{props.stats.map(s => <p key={s.stat.name}>{s.stat.name}</p>)}</div></li>
             </ul>
             <Button className='add-to-fav_btn' type="primary">
                 <img className='add-to-fav' src={icon} alt='pokemon_picture' />

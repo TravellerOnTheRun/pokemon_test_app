@@ -3,30 +3,13 @@
     height: 100vh;
 }
 
-.cardlist-component h2 {
-    color: seashell;
-    margin-top: 0;
-    margin-bottom: 1.4rem;
-}
+@media (min-width: 780px) {
 
-.cardlist-container {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
+    .cardlist-component {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;  
+    }
 
-.cardlist-container li {
-    list-style: none;
-    width: 90vw;
-    height: 20vh;
-    background-color: #e5e6a2;
-    margin-bottom: 1.2rem;
-    font-size: 1.4rem;
-    font-weight: bold;
-    border: 0.15rem solid black;
-    border-radius: 1rem 1rem;
 }
-

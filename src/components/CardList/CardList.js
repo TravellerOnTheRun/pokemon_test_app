@@ -7,7 +7,7 @@ export default props => {
     // const [isLoading, setIsLoading] = useState(false);
 
     return (
-        <div>
+        <div className='cardlist-component'>
             {props.pokemons.map(pokemon => <Card
                 key={pokemon.name}
                 name={pokemon.name}
