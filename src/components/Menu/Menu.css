@@ -10,6 +10,7 @@
     width: 80vw;
     height: 100vh;
     border-left: 0.1rem solid black;
+    z-index: 12;
 }
 
 .menu-component h2 {
