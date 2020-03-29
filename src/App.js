@@ -3,6 +3,7 @@ import './App.css';
 import { Button, Pagination } from 'antd';
 import image from './images/Pokemon.png';
 
+import Login from './components/Login/Login';
 import Menu from './components/Menu/Menu';
 import CardList from './components/CardList/CardList';
 
@@ -39,6 +40,7 @@ function App() {
           <span className='three_dash'></span>
         </Button>
       </header>
+      <Login />
       {
         showMenu ? (
           <div>

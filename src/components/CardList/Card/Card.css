@@ -1,4 +1,4 @@
-.card-component_closed-mobile {
+/* .card-component_closed-mobile {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
@@ -13,9 +13,9 @@
     border-radius: 2rem 2rem;
     border: 0.4rem solid #4c6fb3;
     box-shadow: 0rem 0.5rem 0.5rem black;
-}
+} */
 
-/* .card-component_opened-mobile {
+.card-component_opened-mobile {
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-around;
@@ -31,12 +31,12 @@
     border: 0.4rem solid #4c6fb3;
     box-shadow: 0rem 0.5rem 0.5rem black;
     position: relative;
-} */
+} 
 
-/* .card-component_closed-mobile .pokemon_picture  {
+.card-component_closed-mobile .pokemon_picture  {
     width: 20vw;
     height: 15vh;
-} */
+}
 
 .card-component_opened-mobile .pokemon_picture {
     height: 30vh;
