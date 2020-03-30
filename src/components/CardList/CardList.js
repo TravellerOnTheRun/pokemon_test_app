@@ -1,15 +1,15 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React from 'react';
 import './CardList.css';
+import { v4 as uuidv4 } from 'uuid';
 
 import Card from './Card/Card'; 
 
 export default props => {
-    // const [isLoading, setIsLoading] = useState(false);
 
     return (
         <div className='cardlist-component'>
             {props.pokemons.map(pokemon => <Card
-                key={pokemon.name}
+                key={uuidv4()}
                 name={pokemon.name}
                 types={pokemon.types}
                 abilities={pokemon.abilities}
