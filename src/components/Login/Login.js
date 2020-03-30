@@ -9,6 +9,7 @@ export default props => {
                 <Input className='login_input' placeholder="Your login" />
                 <Input className='password_input' placeholder="Your password" />
                 <Button className='login_btn' type="primary">Log In</Button>
+                <h4>Continue without login</h4>
             </div>
         </div>
     );

@@ -8,3 +8,10 @@
 .filters-component h2 {
     font-weight: normal;
 }
+
+@media (min-width: 1024px) {
+    .filters-component {
+        left: 0;
+        width: 25vw;
+    }
+}

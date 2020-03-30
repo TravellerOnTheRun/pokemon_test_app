@@ -17,6 +17,17 @@
     margin-left: 0.5rem;
 }
 
+.login-component h4 {
+    text-align: center;
+    font-weight: normal;
+    color: #4c6fb3;
+}
+
+.login-component h4:hover {
+    color: #dd2947;
+    text-decoration: underline;
+}
+
 .login_input {
     width: 80vw;
     height: 7vh;
@@ -45,11 +56,11 @@
 .login_btn {
     width: 50vw;
     height: 10vh;
-    margin-left: 4rem;
     font-size: larger;
     border: none;
     background-color: #dd2947;
     color: #e5e6a2;
+    align-self: center;
 }
 
 .login_btn:focus {
