@@ -12,6 +12,8 @@ import { PokemonContext } from './context/pokemon-context';
 function App() {
   const [pokemons, setPokemons] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
+
   const context = useContext(PokemonContext);
 
   useEffect(() => {
@@ -21,12 +23,13 @@ function App() {
   const filterPokemonsByNameHandler = filterValue => {
     if (filterValue.trim().length === 0) {
       setShowMenu(false);
-      return setPokemons(context.pokemons);
+      return context.fetchPokes();
     };
-    const filteredPokemons = pokemons.filter(pokemon => {
+    const filteredPokemons = context.allPokemons.filter(pokemon => {
       return pokemon.name.toLowerCase().includes(filterValue.toLowerCase());
     });
     setPokemons(filteredPokemons);
+    context.pokesTotal = 0;
     setShowMenu(false);
   };
 
@@ -44,7 +47,11 @@ function App() {
           <span className='three_dash'></span>
         </Button>
       </header>
-      <Login />
+      {
+        showLogin
+          ? <Login dismissLogin={() => setShowLogin(false)}/>
+          : null
+      }
       {
         showMenu ? (
           <div>
@@ -58,7 +65,7 @@ function App() {
       }
       {
         context.isLoading
-          ? <Spin size='large' tip='LOADING...'/>
+          ? <Spin size='large' tip='LOADING...' />
           : <CardList pokemons={pokemons}
           />
       }
@@ -72,7 +79,7 @@ function App() {
           onChange={onPageChangeHandler}
           showSizeChanger
           onShowSizeChange={(current, size) => console.log(current, size)}
-
+          hideOnSinglePage
         />
       </div>
     </div>
