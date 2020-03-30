@@ -19,6 +19,7 @@ export const PokemonContext = React.createContext({
 const PokemonContextProvider = props => {
     //Global State
     const [currentlyFetchedPokes, setCurrentlyFetchedPokes] = useState([]);
+    const [allPokemons, setAllPokemons] = useState([]);
     const [pagePokes, setPagePokes] = useState([])
     const [pokesTotal, setPokesTotal] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -27,9 +28,31 @@ const PokemonContextProvider = props => {
     const [URL, setURL] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
+    useEffect(() => {
+        axios.get('https://pokeapi.co/api/v2/pokemon/?limit=964')
+            .then(response => {
+                for (const pokemon of response.data.results) {
+                    axios.get(pokemon.url).then(res => {
+                        const { name, abilities, sprites, stats, types } = res.data;
+                        const transformedPoke = new Pokemon(
+                            uuidv4(),
+                            name,
+                            types,
+                            sprites.front_default,
+                            abilities,
+                            stats
+                        );
+                        setAllPokemons(prevState => {
+                            return [...prevState, transformedPoke];
+                        });
+                    });
+                };
+            });
+    }, []);
+
     //Previous State
     const previousPage = usePrevious(currentPageNumber);
-    const prevPagePokes = usePrevious(pagePokes);
+    // const prevPagePokes = usePrevious(pagePokes);
     const prevUrl = usePrevious(URL);
 
     const fetchThem = async (url, multiple) => {
@@ -82,8 +105,8 @@ const PokemonContextProvider = props => {
                     newCurFetchedPokes.push(transformedPoke);
                 };
                 setCurrentlyFetchedPokes(prevState => {
-                    if(multiple) {
-                        return [ ...prevState, ...newCurFetchedPokes];
+                    if (multiple) {
+                        return [...prevState, ...newCurFetchedPokes];
                     };
                     return newCurFetchedPokes;
                 });
@@ -109,7 +132,7 @@ const PokemonContextProvider = props => {
     useEffect(() => {
         fetchThem(URL).then(res => {
             console.log(res);
-            if(res) {
+            if (res) {
                 setIsLoading(false);
             };
         });
@@ -136,7 +159,8 @@ const PokemonContextProvider = props => {
             currentPageNumber,
             pageChangedHandler,
             pagePokes,
-            isLoading
+            isLoading,
+            allPokemons
         }}>
             {props.children}
         </PokemonContext.Provider>
