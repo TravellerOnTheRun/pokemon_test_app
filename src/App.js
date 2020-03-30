@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './App.css';
-import { Button, Pagination } from 'antd';
+import { Button, Pagination, Spin } from 'antd';
 import image from './images/Pokemon.png';
 
 import Login from './components/Login/Login';
@@ -14,6 +14,10 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const context = useContext(PokemonContext);
 
+  useEffect(() => {
+    setPokemons(context.pagePokes);
+  }, [context.pagePokes]);
+
   const filterPokemonsByNameHandler = filterValue => {
     if (filterValue.trim().length === 0) {
       setShowMenu(false);
@@ -26,9 +30,9 @@ function App() {
     setShowMenu(false);
   };
 
-  useEffect(() => {
-    setPokemons(context.pokemons);
-  }, [context.pokemons]);
+  const onPageChangeHandler = page => {
+    context.pageChangedHandler(page);
+  };
 
   return (
     <div className="App">
@@ -45,13 +49,31 @@ function App() {
         showMenu ? (
           <div>
             <div className='backdrop' onClick={() => setShowMenu(prevState => !prevState)}></div>
-            <Menu filterPokesFn={filterPokemonsByNameHandler} />
+            <Menu
+              filterPokesFn={filterPokemonsByNameHandler}
+              onChangePokes={context.fetchPokes}
+            />
           </div>
         ) : null
       }
-      <CardList pokemons={pokemons} />
+      {
+        context.isLoading
+          ? <Spin size='large' tip='LOADING...'/>
+          : <CardList pokemons={pokemons}
+          />
+      }
       <div className='pagination-container'>
-        <Pagination className='pagination' defaultCurrent={1} total={context.pokesTotal} />
+        <Pagination
+          className='pagination'
+          defaultCurrent={1}
+          total={context.pokesTotal}
+          pageSize={context.itemsPerPage}
+          pageSizeOptions={['10', '20', '30', '50']}
+          onChange={onPageChangeHandler}
+          showSizeChanger
+          onShowSizeChange={(current, size) => console.log(current, size)}
+
+        />
       </div>
     </div>
   );
