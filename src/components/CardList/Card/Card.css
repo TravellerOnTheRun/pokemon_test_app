@@ -116,10 +116,14 @@
 
 @media (min-width: 780px) {
 
+
     .card-component_opened-mobile {
-        width: 30vw;
+        width: 15vw;
         margin-left: 4rem;
-        height: 25rem;
+        height: 20rem;
+        margin-top: 0;
+        justify-content: start;
+        align-items: flex-start;
     }
 
     .card-component_opened-mobile .pokemon_picture {

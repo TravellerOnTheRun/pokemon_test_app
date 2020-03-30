@@ -13,6 +13,9 @@
     z-index: 12;
 }
 
-.menu-component h2 {
-
+@media (min-width: 1024px) {
+    .menu-component {
+        left: 0;
+        width: 25vw;
+    }
 }
