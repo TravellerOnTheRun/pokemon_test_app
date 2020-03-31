@@ -6,9 +6,16 @@
     background-color: #e5e6a2;
     position: fixed;
     top: 0;
-    right: 0;
-    width: 80vw;
+    left: 0;
+    width: 25vw;
     height: 100vh;
     border-left: 0.1rem solid black;
     z-index: 12;
+    visibility: hidden;
+}
+
+@media (min-width: 1024px) {
+    .menu-component {
+        visibility: visible;
+    }
 }
