@@ -1,6 +1,6 @@
 .login-component {
     width: 95vw;
-    height: 40vh;
+    height: 50vh;
     background-color: #e5e6a2;
     position: fixed;
     top: 30vh;
@@ -10,6 +10,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-self: center;
+    text-align: center;
     box-sizing: border-box;
     border: 0.5rem solid #4c6fb3; 
     border-radius: 2rem 2rem;
@@ -21,11 +22,16 @@
     text-align: center;
     font-weight: normal;
     color: #4c6fb3;
+    margin: 0;
 }
 
 .login-component h4:hover {
     color: #dd2947;
     text-decoration: underline;
+}
+
+.form-inputs {
+    text-align: center;
 }
 
 .login_input {
@@ -34,37 +40,44 @@
 }
 
 .login_input::placeholder,
-.password_input::placeholder {
+.password_input::placeholder,
+input[type="password"]::placeholder {
     text-align: center;
     font-size: large;
     color: #4c6fb3;
 }
 
 .login_input:focus,
-.password_input:focus {
+.password_input:focus,
+input[type="password"]:focus {
     outline: none;
     border: 0.2rem solid #4c6fb3;
     font-size: 1.4rem;
     color: #4c6fb3
 }
 
-.password_input {
+.password_input,
+input[type="password"] {
     width: 80vw;
     height: 7vh;
+    margin-bottom: 3rem;
+    align-self: center;
 }
 
 .login_btn {
-    width: 50vw;
-    height: 10vh;
+    width: 80vw;
+    height: 7vh;
     font-size: larger;
     border: none;
     background-color: #dd2947;
     color: #e5e6a2;
     align-self: center;
+    margin-bottom: 0.5rem;
+    box-sizing: border-box;
 }
 
 .login_btn:focus {
-    box-shadow: 0rem 0.4rem 0.4rem #4c6fb3;
+    box-shadow: 0rem 0.1rem 0.4rem #4c6fb3;
 }
 
 .layer-login {

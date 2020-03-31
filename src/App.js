@@ -5,6 +5,7 @@ import image from './images/Pokemon.png';
 
 import Login from './components/Login/Login';
 import Menu from './components/Menu/Menu';
+import MenuDesktop from './components/Menu/MenuDesktop';
 import CardList from './components/CardList/CardList';
 
 import { PokemonContext } from './context/pokemon-context';
