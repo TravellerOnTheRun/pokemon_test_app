@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 import { Form, Input, Button } from 'antd';
 
@@ -11,8 +11,7 @@ const tailLayout = {
 };
 
 export default props => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [isSignup, setIsSignup] = useState(false);
 
     const signupHandler = (email, password) => {
         console.log(email, password);
@@ -28,7 +27,7 @@ export default props => {
 
     return (
         <div className='login-component'>
-            <div className='layer-login' onClick={props.dismissLogin}></div>
+            {/* <div className='layer-login' onClick={props.dismissLogin}></div> */}
             <Form
                 {...layout}
                 name="basic"
@@ -49,14 +48,28 @@ export default props => {
                     name="password"
                     rules={[{ required: true, message: 'Please input your password!' }]}
                 >
-                    <Input className='password_input' placeholder="Your password" />
+                    <Input.Password className='password_input' placeholder="Your password" />
                 </Form.Item>
 
                 <Form.Item {...tailLayout}>
-                    <Button className='login_btn' type="primary">Log In</Button>
+                    {
+                        isSignup
+                            ? (
+                                <div>
+                                    <Button className='login_btn' type="primary">SignUp</Button>
+                                    <Button className='login_btn' type="primary" onClick={() => setIsSignup(false)}>Switch to Login</Button>
+                                </div>
+                            )
+                            : (
+                                <div>
+                                    <Button className='login_btn' type="primary">Log In</Button>
+                                    <Button className='login_btn' type="primary"onClick={() => setIsSignup(true)}>Switch to SignUp</Button>
+                                </div>
+                            )
+                    }
                 </Form.Item>
             </Form>
-            <h4 onClick={props.dismissLogin} >Continue without login</h4>
+            <h4 onClick={props.dismissLogin}>Continue without login</h4>
         </div>
     );
 };
