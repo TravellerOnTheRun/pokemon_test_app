@@ -5,7 +5,7 @@ import Filters from './Filters/Filters';
 
 export default props => {
     return (
-        <div className='menu-component'>
+        <div className='menu-component_desktop'>
             <Login />
             <Filters
                 search={props.filterPokesFn}
