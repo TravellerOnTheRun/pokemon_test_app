@@ -38,7 +38,7 @@ export default props => {
     return (
         <div className='login-component'>
             {/* <div className='layer-login' onClick={props.dismissLogin}></div> */}
-            <Form
+            <Form className='form-inputs'
                 {...layout}
                 name="basic"
                 initialValues={{ remember: true }}
@@ -65,7 +65,8 @@ export default props => {
                     <Input className='login_input' placeholder="Your Email" />
                 </Form.Item>
 
-                < Form.Item
+
+                <Form.Item className='password_input'
                     label="Password"
                     name="password"
                     rules={[{ required: true, message: 'Please input your password!' }]}
