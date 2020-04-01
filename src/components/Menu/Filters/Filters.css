@@ -44,6 +44,11 @@
     box-shadow: 0 0.2rem 0.4rem black;
 }
 
+.checkbox input[type='checkbox'] {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
 @media (min-width: 504px) {
 
     .checkbox-btn:hover {
