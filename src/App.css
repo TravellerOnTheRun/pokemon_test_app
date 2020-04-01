@@ -171,4 +171,9 @@ header h1 {
     margin-left: 20rem;
 }
 
+  .backdrop,
+  .button-menu {
+      visibility: hidden;
+  }
+
 }

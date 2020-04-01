@@ -46,15 +46,15 @@ export default props => {
 
     return (
         <div className='filters-component'>
-            <Search
+            <Search className='filters-search'
                 placeholder="Find your pokemon by its name"
                 enterButton
                 size="large"
                 onSearch={onSearchEnterHandler}
                 onPressEnter={onSearchEnterHandler}
             />
-            <Checkbox.Group options={types} onChange={typeChangedHandler} value={checkedValues}/>
-            <Button onClick={searchActivateHandler}>Search by selected tags</Button>
+            <Checkbox.Group className='checkbox' options={types} onChange={typeChangedHandler} value={checkedValues}/>
+            <Button className='checkbox-btn' onClick={searchActivateHandler}>Search by selected tags</Button>
         </div>
     );
 };
