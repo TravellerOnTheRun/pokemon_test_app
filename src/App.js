@@ -13,8 +13,17 @@ function App() {
   const [pokemons, setPokemons] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
+  const [showUserProfileMenu, setShowUserProfileMenu] = useState(false);
 
   const context = useContext(PokemonContext);
+
+  useEffect(() => {
+    if (context.token) {
+      setShowUserProfileMenu(true);
+    } else {
+      setShowUserProfileMenu(false);
+    };
+  }, [context.token]);
 
   useEffect(() => {
     setPokemons(context.pagePokes);
@@ -49,7 +58,10 @@ function App() {
       </header>
       {
         showLogin
-          ? <Login dismissLogin={() => setShowLogin(false)}/>
+          ? <Login
+            dismissLogin={() => setShowLogin(false)}
+            storeToken={context.storeTokenHandler}
+          />
           : null
       }
       {
@@ -57,6 +69,7 @@ function App() {
           <div>
             <div className='backdrop' onClick={() => setShowMenu(prevState => !prevState)}></div>
             <Menu
+              showUserProfile={showUserProfileMenu}
               filterPokesFn={filterPokemonsByNameHandler}
               onChangePokes={context.fetchPokes}
             />
