@@ -1,17 +1,33 @@
 .cardlist-component {
     width: 100vw;
-    height: 100vh;
+    height: 100wh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media (min-width: 780px) {
 
-    .cardlist-component {
+    /* .cardlist-component {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;  
+        flex-wrap: wrap;
         margin: 0;
         padding: 0;
+    } */
+    .cardlist-component {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: start;
+        align-items: flex-start;
+        justify-content: space-evenly;
     }
+}
 
+@media (min-width: 1024px) {
+    .cardlist-component {
+        width: 70vw;
+    }
 }
