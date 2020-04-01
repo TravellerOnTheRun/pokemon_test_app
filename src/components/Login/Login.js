@@ -18,14 +18,16 @@ export default props => {
     const onFinish = values => {
         if( isSignup) {
             axios.post('http://localhost:8080/signup', values)
-            .then(res => console.log(res))
+            .then(res => {
+                setIsSignup(false);
+            })
             .catch(err => console.log(err)); 
         } else {
             axios.post('http://localhost:8080/login', values)
             .then(response => {
-                console.log(response);
                 const { token, expiresIn, userId } = response.data;
                 props.storeToken(token, expiresIn, userId);
+                props.dismissLogin();
             })
             .catch(err => console.log(err));
         };
