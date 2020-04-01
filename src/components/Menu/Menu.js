@@ -1,14 +1,18 @@
 import React from 'react';
 import './Menu.css';
 
-import Login from './LoginButton/LoginButton';
+import LoginButton from './LoginButton/LoginButton';
 import Filters from './Filters/Filters';
 import UserProfileMenu from './ProfileMenu/UserProfileMenu';
 
 export default props => {
     return (
         <div className='menu-component'>
-            <Login />
+            <LoginButton
+                token={props.token}
+                logout={props.logout}
+                openLogin={props.openLogin}
+            />
             <Filters
                 search={props.filterPokesFn}
                 onChangePokes={props.onChangePokes}

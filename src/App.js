@@ -19,12 +19,12 @@ function App() {
   const context = useContext(PokemonContext);
 
   useEffect(() => {
-    if (context.token) {
+    if(context.token) {
       setShowUserProfileMenu(true);
     } else {
       setShowUserProfileMenu(false);
     };
-  }, [context.token]);
+  }, [context.token])
 
   useEffect(() => {
     setPokemons(context.pagePokes);
@@ -47,6 +47,11 @@ function App() {
     context.pageChangedHandler(page);
   };
 
+  const onLogoutHandler = () => {
+    context.logout();
+    setShowUserProfileMenu(false);
+  };
+
   return (
     <div className="App">
       <header>
@@ -57,20 +62,26 @@ function App() {
           <span className='three_dash'></span>
         </Button>
       </header>
-      {/* {
+      {
         showLogin
           ? <Login
             dismissLogin={() => setShowLogin(false)}
             storeToken={context.storeTokenHandler}
           />
           : null
-      } */}
+      }
       <MenuDesktop />
       {
         showMenu ? (
           <div>
             <div className='backdrop' onClick={() => setShowMenu(prevState => !prevState)}></div>
             <Menu
+              token={context.token}
+              openLogin={() => {
+                setShowLogin(true);
+                setShowMenu(false);
+              }}
+              logout={onLogoutHandler}
               showUserProfile={showUserProfileMenu}
               filterPokesFn={filterPokemonsByNameHandler}
               onChangePokes={context.fetchPokes}

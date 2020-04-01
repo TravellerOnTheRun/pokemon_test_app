@@ -15,7 +15,7 @@ export default props => {
                 <li>Stats: <div className='wrapping'>{props.stats.map(s => <p key={s.stat.name}>{s.stat.name}</p>)}</div></li>
             </ul>
             <Button className='add-to-fav_btn' type="primary">
-                {/* <img className='add-to-fav' src={icon} alt='pokemon_picture' /> */}
+                <img className='add-to-fav' src={icon} alt='pokemon_picture' />
             </Button>
         </div>
     );

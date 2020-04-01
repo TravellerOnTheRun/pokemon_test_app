@@ -35,10 +35,10 @@ const PokemonContextProvider = props => {
     const [URL, setURL] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
-     //Previous State
-     const previousPage = usePrevious(currentPageNumber);
-     // const prevPagePokes = usePrevious(pagePokes);
-     const prevUrl = usePrevious(URL);
+    //Previous State
+    const previousPage = usePrevious(currentPageNumber);
+    // const prevPagePokes = usePrevious(pagePokes);
+    const prevUrl = usePrevious(URL);
 
     useEffect(() => {
         axios.get('https://pokeapi.co/api/v2/pokemon/?limit=964')
@@ -63,20 +63,40 @@ const PokemonContextProvider = props => {
     }, []);
 
     useEffect(() => {
+        if (localStorage.getItem('token')) {
+          setToken(localStorage.getItem('token'));
+          setUserId(localStorage.getItem('userId'));
+          setExpiresIn(localStorage.getItem('expiresIn'));
+        } else {
+          logout();
+        };
+      });
+
+    useEffect(() => {
         const timeout = setTimeout(() => {
-            setToken(null);
-            setUserId(null);
-            setExpiresIn(null);
-        }, expiresIn)
+            logout();
+        }, 5000)
         return () => {
             clearTimeout(timeout);
         }
-    }, [token, expiresIn])
+    }, [expiresIn])
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('expiresIn');
+        setToken(null);
+        setExpiresIn(null);
+        setUserId(null);
+    };
 
     const storeTokenHandler = (token, expiresIn, userId) => {
+        localStorage.setItem('token', token);
+        localStorage.setItem('userId', userId);
+        localStorage.setItem('expiresIn', expiresIn);
         setToken(token);
-        setExpiresIn(expiresIn);
         setUserId(userId);
+        setExpiresIn(expiresIn);
     };
 
     const fetchThem = async (url, multiple) => {
@@ -177,7 +197,7 @@ const PokemonContextProvider = props => {
         <PokemonContext.Provider value={{
             token,
             storeTokenHandler,
-            userId,
+            logout,
             currentlyFetchedPokes,
             fetchPokes: fetchThem,
             pokesTotal,
