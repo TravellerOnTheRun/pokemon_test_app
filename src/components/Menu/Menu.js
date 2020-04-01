@@ -1,7 +1,9 @@
 import React from 'react';
 import './Menu.css';
+
 import Login from './LoginButton/LoginButton';
 import Filters from './Filters/Filters';
+import UserProfileMenu from './ProfileMenu/UserProfileMenu';
 
 export default props => {
     return (
@@ -11,9 +13,11 @@ export default props => {
                 search={props.filterPokesFn}
                 onChangePokes={props.onChangePokes}
             />
-            <h2>Menu Component</h2>
-            <h2>Menu Component</h2>
-            <h2>Menu Component</h2>
+            {
+                props.showUserProfile
+                    ? <UserProfileMenu />
+                    : null
+            }
         </div>
     );
 };
