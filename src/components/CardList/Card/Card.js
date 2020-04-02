@@ -6,7 +6,7 @@ import icon from './../../../images/emptystar.png';
 
 export default props => {
     return (
-        <div className='card-component_closed'>
+        <div className='card-component_closed card-component_opened'>
             <img className='pokemon_picture' src={props.image} alt='pokemon_picture' />  
             <ul className='card-container'>
                 <li>{props.name.toUpperCase()}</li>
