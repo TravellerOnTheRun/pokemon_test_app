@@ -1,12 +1,12 @@
 import React from 'react';
 import './MenuDesktop.css';
-import Login from './LoginButton/LoginButton';
+import LoginButton from './LoginButton/LoginButton';
 import Filters from './Filters/Filters';
 
 export default props => {
     return (
         <div className='menu-component_desktop'>
-            <Login />
+            <LoginButton className='login-button_desktop' />
             <Filters
                 search={props.filterPokesFn}
                 onChangePokes={props.onChangePokes}

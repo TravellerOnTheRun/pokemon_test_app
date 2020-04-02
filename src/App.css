@@ -44,7 +44,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, .6);
-  z-index: 11;
+  z-index: 14;
 }
 
 html {
@@ -53,13 +53,20 @@ html {
   width: 100vw;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 header {
+  width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 13;
+  background-color: #dd2947;
 }
 
 .pokemon_picture-header {
@@ -171,9 +178,12 @@ header h1 {
     margin-left: 20rem;
 }
 
-  .backdrop,
+  .pagination-container {
+    width: 75vw;
+  }
+
   .button-menu {
-      visibility: hidden;
+      display: none;
   }
 
 }

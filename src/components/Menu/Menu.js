@@ -8,7 +8,7 @@ import UserProfileMenu from './ProfileMenu/UserProfileMenu';
 export default props => {
     return (
         <div className='menu-component'>
-            <LoginButton
+            <LoginButton className='login-button'
                 token={props.token}
                 logout={props.logout}
                 openLogin={props.openLogin}
