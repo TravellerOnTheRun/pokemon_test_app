@@ -71,10 +71,14 @@ function App() {
       <main>
         {
           showLogin
-            ? <Login
+            ? 
+            <div>
+              <div className='backdrop' onClick={() => setShowLogin(prevState => !prevState)}></div>
+              <Login
               dismissLogin={() => setShowLogin(false)}
               storeToken={context.storeTokenHandler}
             />
+            </div>
             : null
         }
         <MenuDesktop />
