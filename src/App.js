@@ -19,7 +19,7 @@ function App() {
   const context = useContext(PokemonContext);
 
   useEffect(() => {
-    if(context.token) {
+    if (context.token) {
       setShowUserProfileMenu(true);
     } else {
       setShowUserProfileMenu(false);
@@ -28,19 +28,26 @@ function App() {
 
   useEffect(() => {
     setPokemons(context.pagePokes);
+    setShowMenu(false);
   }, [context.pagePokes]);
 
   const filterPokemonsByNameHandler = filterValue => {
+    console.log(filterValue);
     if (filterValue.trim().length === 0) {
       setShowMenu(false);
       return context.fetchPokes();
+    } else {
+      console.log(context.allPokemons);
+      const filteredPokemons = context.allPokemons.filter(pokemon => {
+        return pokemon.name.toLowerCase().includes(filterValue.toLowerCase());
+      });
+      if (!filteredPokemons) {
+        setPokemons([]);
+      };
+      setPokemons(filteredPokemons);
+      context.pokesTotal = 0;
+      setShowMenu(false);
     };
-    const filteredPokemons = context.allPokemons.filter(pokemon => {
-      return pokemon.name.toLowerCase().includes(filterValue.toLowerCase());
-    });
-    setPokemons(filteredPokemons);
-    context.pokesTotal = 0;
-    setShowMenu(false);
   };
 
   const onPageChangeHandler = page => {
@@ -50,6 +57,52 @@ function App() {
   const onLogoutHandler = () => {
     context.logout();
     setShowUserProfileMenu(false);
+  };
+
+  let mainComponent = <Spin size='large' />
+  let cardListComponent = <CardList pokemons={pokemons} />
+
+  if (!pokemons) {
+    cardListComponent = <p>No pokemons found!</p>;
+  };
+
+  if (!context.isLoading) {
+    mainComponent = (
+      <main>
+        {
+          showLogin
+            ? <Login
+              dismissLogin={() => setShowLogin(false)}
+              storeToken={context.storeTokenHandler}
+            />
+            : null
+        }
+        <MenuDesktop />
+        {
+          showMenu ? (
+            <div>
+              <div className='backdrop' onClick={() => setShowMenu(prevState => !prevState)}></div>
+              <Menu
+                token={context.token}
+                openLogin={() => {
+                  setShowLogin(true);
+                  setShowMenu(false);
+                }}
+                logout={onLogoutHandler}
+                showUserProfile={showUserProfileMenu}
+                filterPokesFn={filterPokemonsByNameHandler}
+                onChangePokes={context.fetchPokes}
+              />
+            </div>
+          ) : null
+        }
+        {
+          context.isLoading
+            ? <Spin size='large' tip='LOADING...' />
+            : cardListComponent
+        }
+      </main>
+    );
   };
 
   return (
@@ -62,39 +115,7 @@ function App() {
           <span className='three_dash'></span>
         </Button>
       </header>
-      {
-        showLogin
-          ? <Login
-            dismissLogin={() => setShowLogin(false)}
-            storeToken={context.storeTokenHandler}
-          />
-          : null
-      }
-      <MenuDesktop />
-      {
-        showMenu ? (
-          <div>
-            <div className='backdrop' onClick={() => setShowMenu(prevState => !prevState)}></div>
-            <Menu
-              token={context.token}
-              openLogin={() => {
-                setShowLogin(true);
-                setShowMenu(false);
-              }}
-              logout={onLogoutHandler}
-              showUserProfile={showUserProfileMenu}
-              filterPokesFn={filterPokemonsByNameHandler}
-              onChangePokes={context.fetchPokes}
-            />
-          </div>
-        ) : null
-      }
-      {
-        context.isLoading
-          ? <Spin size='large' tip='LOADING...' />
-          : <CardList pokemons={pokemons}
-          />
-      }
+      {mainComponent}
       <div className='pagination-container'>
         <Pagination
           className='pagination'
