@@ -11,7 +11,43 @@
     max-width: 27rem;
     height: 100vh;
     border-left: 0.1rem solid black;
-    z-index: 12;
+    z-index: 15;
+}
+
+.account-component {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: 30vh;
+    width: 80vw;
+    max-width: 27rem;
+    padding-left: 1rem;
+}
+
+.account-component h2 {
+    align-self: center;
+    color: #dd2947;
+    font-weight: normal;
+    margin-top: 0;
+}
+
+.user,
+.favorites {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    padding-left: 1rem;
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+.user h3,
+.favorites h3 {
+    margin-top: 0;
+    padding-left: 1rem;
 }
 
 @media (min-width: 1024px) {
