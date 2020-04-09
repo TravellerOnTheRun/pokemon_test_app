@@ -14,10 +14,7 @@ export default props => {
                 logout={props.logout}
                 openLogin={props.openLogin}
             />
-            <Filters
-                search={props.filterPokesFn}
-                onChangePokes={props.onChangePokes}
-            />
+            <Filters closeMenu={props.closeMenu}/>
             {
                 props.showUserProfile
                     ? <UserProfileMenu />

@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import Pokemon from '../models/pokemon';
 
+
 export const PokemonContext = React.createContext({
     token: null,
     pokemons: [],
@@ -25,7 +26,6 @@ const PokemonContextProvider = props => {
     const [expiresIn, setExpiresIn] = useState(0);
     //Pokemon data
     const [currentlyFetchedPokes, setCurrentlyFetchedPokes] = useState([]);
-    const [allPokemons, setAllPokemons] = useState([]);
     const [pagePokes, setPagePokes] = useState([])
     const [pokesTotal, setPokesTotal] = useState(0);
     //Page and nav
@@ -37,46 +37,7 @@ const PokemonContextProvider = props => {
 
     //Previous State
     const previousPage = usePrevious(currentPageNumber);
-    // const prevPagePokes = usePrevious(pagePokes);
     const prevUrl = usePrevious(URL);
-
-
-    useEffect(() => {
-        const pokemons = JSON.parse(localStorage.getItem('pokemons'));
-        if (pokemons) {
-            setAllPokemons(pokemons);
-        } else {
-            let pokemons = [];
-            axios.get('https://pokeapi.co/api/v2/pokemon/?limit=964')
-                .then(response => {
-                    for (const pokemon of response.data.results) {
-                        axios.get(pokemon.url).then(res => {
-                            const { name, abilities, sprites, stats, types } = res.data;
-                            const transformedPoke = new Pokemon(
-                                uuidv4(),
-                                name,
-                                types,
-                                sprites.front_default,
-                                abilities,
-                                stats
-                            );
-                            pokemons.push(transformedPoke);
-                        });
-                    };
-                    setAllPokemons(pokemons);
-                });
-        };
-    }, []);
-
-    useEffect(() => {
-        if (localStorage.getItem('token')) {
-            setToken(localStorage.getItem('token'));
-            setUserId(localStorage.getItem('userId'));
-            setExpiresIn(localStorage.getItem('expiresIn'));
-        } else {
-            logout();
-        };
-    });
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -97,6 +58,7 @@ const PokemonContextProvider = props => {
     };
 
     const storeTokenHandler = (token, expiresIn, userId) => {
+        console.log('Store token handler');
         localStorage.setItem('token', token);
         localStorage.setItem('userId', userId);
         localStorage.setItem('expiresIn', expiresIn);
@@ -106,19 +68,8 @@ const PokemonContextProvider = props => {
     };
 
     const fetchThem = async (url, multiple) => {
-        const allPokes = JSON.parse(localStorage.getItem('pokemons'));
-        console.log(allPokes);
-        if(allPokes) {
-            setAllPokemons(allPokes);
-        };
         setIsLoading(true);
         if (prevUrl !== url || !url) {
-            console.log(`URL: ${url}`);
-            console.log(`Current URL: ${URL}`);
-            console.log(`Current Offset: ${currentOffset}`);
-            console.log(`Items per page: ${itemsPerPage}`);
-            console.log(`Pokes Total: ${pokesTotal}`);
-
             setURL(url);
             setPagePokes([]);
             let response;
@@ -144,7 +95,6 @@ const PokemonContextProvider = props => {
                 return true;
             } else {
                 let newCurFetchedPokes = [];
-                console.log(`[ELSE BLOCK IN FETCH THEM FN]`);
                 response = await axios.get(url);
                 for (const pokemon of response.data.pokemon) {
                     const res = await axios.get(pokemon.pokemon.url);
@@ -186,7 +136,6 @@ const PokemonContextProvider = props => {
 
     useEffect(() => {
         fetchThem(URL).then(res => {
-            console.log(res);
             if (res) {
                 setIsLoading(false);
             };
@@ -195,7 +144,6 @@ const PokemonContextProvider = props => {
 
     useEffect(() => {
         setPokesTotal(currentlyFetchedPokes.length);
-        console.log(currentlyFetchedPokes);
         const newPagePokes = currentlyFetchedPokes.slice(currentOffset, currentOffset + itemsPerPage);
         setPagePokes(newPagePokes);
     }, [currentlyFetchedPokes, currentPageNumber]);
@@ -207,6 +155,7 @@ const PokemonContextProvider = props => {
     return (
         <PokemonContext.Provider value={{
             token,
+            userId,
             storeTokenHandler,
             logout,
             currentlyFetchedPokes,
@@ -218,7 +167,7 @@ const PokemonContextProvider = props => {
             pageChangedHandler,
             pagePokes,
             isLoading,
-            allPokemons
+
         }}>
             {props.children}
         </PokemonContext.Provider>
