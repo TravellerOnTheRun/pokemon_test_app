@@ -1,6 +1,6 @@
 .filters-component {
     width: 80vw;
-    max-width: 27rem;
+    max-width: 23rem;
     height: 50vh;
     text-align: center;
     background-color: #dd2947;
@@ -44,10 +44,6 @@
     box-shadow: 0 0.2rem 0.4rem black;
 }
 
-.checkbox input[type='checkbox'] {
-    width: 1.1rem;
-    height: 1.1rem;
-}
 
 @media (min-width: 504px) {
 
@@ -65,6 +61,7 @@
 @media (min-width: 1024px) {
     .filters-component {
         left: 0;
-        width: 25vw;
+        width: 80vw;
+        z-index: 15;
     }
 }

@@ -9,7 +9,6 @@ import { usePrevious } from './utility/custom-hooks';
 
 import Login from './components/Login/Login';
 import Menu from './components/Menu/Menu';
-import MenuDesktop from './components/Menu/MenuDesktop';
 import CardList from './components/CardList/CardList';
 
 function App() {
@@ -51,32 +50,27 @@ function App() {
       <main>
         {
           showLogin
-            ? 
+            ?
             <div>
               <div className='backdrop' onClick={() => setShowLogin(prevState => !prevState)}></div>
               <Login
-              dismissLogin={() => setShowLogin(false)}
-            />
+                dismissLogin={() => setShowLogin(false)}
+              />
             </div>
             : null
         }
-        <MenuDesktop />
-        {
-          showMenu ? (
-            <div>
-              <div className='backdrop' onClick={() => setShowMenu(prevState => !prevState)}></div>
-              <Menu
-                openLogin={() => {
-                  setShowLogin(true);
-                  setShowMenu(false);
-                }}
-                closeMenu={() => setShowMenu(false)}
-                logout={onLogoutHandler}
-                showUserProfile={showUserProfileMenu}
-              />
-            </div>
-          ) : null
-        }
+        <Menu className='menu' style='menu-component_desktop' />
+        <Menu 
+          style='menu-component'
+          openLogin={() => {
+            setShowLogin(true);
+            setShowMenu(false);
+          }}
+          closeMenu={() => setShowMenu(false)}
+          isShown={showMenu}
+          logout={onLogoutHandler}
+          showUserProfile={showUserProfileMenu}
+        />
         <CardList />
       </main>
       <div className='pagination-container'>

@@ -1,36 +1,35 @@
-
-/* 
-.account-component_desktop {
+.account-component {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
     height: 30vh;
-    width: 25vw;
+    width: 80vw;
+    max-width: 27rem;
     padding-left: 1rem;
 }
 
-.account-component_desktop h2 {
+.account-component h2 {
     align-self: center;
     color: #dd2947;
     font-weight: normal;
     margin-top: 0;
 }
 
-.user_desktop,
-.favorites_desktop {
+.user,
+.favorites {
     display: flex;
     flex-direction: row;
     align-items: baseline;
     padding-left: 1rem;
 }
 
-.icon_desktop {
+.icon {
     font-size: 1.5rem;
 }
 
-.user_desktop h3,
-.favorites_desktop h3 {
+.user h3,
+.favorites h3 {
     margin-top: 0;
     padding-left: 1rem;
-} */
+}

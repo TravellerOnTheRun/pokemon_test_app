@@ -8,50 +8,51 @@
     top: 0;
     right: 0;
     width: 80vw;
-    max-width: 27rem;
+    max-width: 23rem;
     height: 100vh;
     border-left: 0.1rem solid black;
     z-index: 15;
 }
 
-.account-component {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-    height: 30vh;
-    width: 80vw;
-    max-width: 27rem;
-    padding-left: 1rem;
+.menu-component_desktop {
+    display: none;
 }
 
-.account-component h2 {
-    align-self: center;
-    color: #dd2947;
-    font-weight: normal;
-    margin-top: 0;
+.invisible {    
+    display: none;
 }
 
-.user,
-.favorites {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    padding-left: 1rem;
-}
+.backdrop {
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 14;
+  }
 
-.icon {
-    font-size: 1.5rem;
-}
-
-.user h3,
-.favorites h3 {
-    margin-top: 0;
-    padding-left: 1rem;
-}
 
 @media (min-width: 1024px) {
-    .menu-component {
+    .menu-component_desktop {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        background-color: #e5e6a2;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 25vw;
+        height: 100vh;
+        border-left: 0.1rem solid black;
+        z-index: 15;
+    }
+    .invisible {    
+        display: flex;
+    }
+    .backdrop {
         display: none;
     }
 }
+
