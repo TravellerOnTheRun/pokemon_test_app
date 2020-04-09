@@ -124,9 +124,9 @@
 
 @media (min-width: 580px) {
 
-    /* .card-component_closed {
+    .card-component_closed {
         max-width: 70vw;
-    } */
+    }
 
     .card-component_opened {
         max-width: 70vw;
@@ -145,10 +145,10 @@
 
 @media (min-width: 780px) {
 
-    /* .card-component_closed {
+    .card-component_closed {
         max-width: 40vw;
         height: 25vh;
-    } */
+    }
 
     .card-component_opened {
         max-width: 50vw;
@@ -160,11 +160,11 @@
 }
 
 @media (min-width: 1024px) {
-
-    /* .card-component_closed {
+ 
+    .card-component_closed {
         max-width: 30vw;
         height: 20vh;
-    } */
+    } 
 
     .card-component_opened {
         max-width: 35vw;
