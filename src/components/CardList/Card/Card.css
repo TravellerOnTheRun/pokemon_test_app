@@ -1,6 +1,7 @@
 .card-component_closed {
     height: 30vh;
     width: 90vw;
+    max-width: 23rem;
     background-color: #e5e6a2;
     margin: 0.5rem;
     display: flex;
@@ -162,7 +163,7 @@
 @media (min-width: 1024px) {
  
     .card-component_closed {
-        max-width: 30vw;
+        max-width: 27vw;
         height: 20vh;
     } 
 
