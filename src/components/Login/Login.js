@@ -39,7 +39,6 @@ export default props => {
 
     return (
         <div className='login-component'>
-            {/* <div className='layer-login' onClick={props.dismissLogin}></div> */}
             <Form className='form-inputs'
                 {...layout}
                 name="basic"

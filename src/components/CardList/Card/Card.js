@@ -14,8 +14,8 @@ export default props => {
     }, []);
 
     return (
-        <div className='card-component_closed'>
-            <img className='pokemon_picture' src={props.image} alt='pokemon_picture' />
+        <div className='card-component_closed card-component_opened'>
+            <img className='pokemon_picture' src={props.image} alt='pokemon_picture' />  
             <ul className='card-container'>
                 <li>{props.name.toUpperCase()}</li>
                 <li>Type: <div className='wrapping'>{props.types.map(t => <p key={t}>{t}</p>)}</div></li>

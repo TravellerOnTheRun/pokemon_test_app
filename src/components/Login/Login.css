@@ -4,12 +4,11 @@
     background-color: #e5e6a2;
     position: fixed;
     top: 30vh;
-    left: 0;
-    z-index: 14;
+    left: 0vw;
+    z-index: 16;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-self: center;
     text-align: center;
     box-sizing: border-box;
     border: 0.5rem solid #4c6fb3; 
@@ -32,7 +31,9 @@
 
 .login_input {
     width: 80vw;
+    max-width: 500px;
     height: 7vh;
+    align-self: center;
 }
 
 .login_input::placeholder,
@@ -44,7 +45,6 @@ input[type="password"]::placeholder {
 }
 
 .login_input:focus,
-.password_input:focus,
 input[type="password"]:focus {
     outline: none;
     border: 0.2rem solid #4c6fb3;
@@ -52,11 +52,10 @@ input[type="password"]:focus {
     color: #4c6fb3
 }
 
-.password_input,
 input[type="password"] {
     width: 80vw;
+    max-width: 500px;
     height: 7vh;
-    margin-bottom: 3rem;
     align-self: center;
 }
 
@@ -68,7 +67,7 @@ input[type="password"] {
     background-color: #dd2947;
     color: #e5e6a2;
     align-self: center;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
     box-sizing: border-box;
 }
 
@@ -84,4 +83,42 @@ input[type="password"] {
     position: fixed;
     top: 0;
     left: 0;
+}
+
+@media (min-width: 580px) {
+
+    .login-component {
+        width: 90vw;
+        height: 50vh;
+        left: 3vw;
+    }
+
+    .login_btn {
+        width: 80vw;
+        max-width: 500px;
+    }
+}
+
+@media (min-width: 780px) {
+
+    .login-component {
+        width: 70vw;
+        height: 50vh;
+        left: 10vw;
+    }
+
+    .login_btn {
+        width: 80vw;
+        max-width: 400px;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .login-component {
+        width: 70vw;
+        max-width: 660px;
+        height: 50vh;
+        left: 10vw;
+    }
 }
