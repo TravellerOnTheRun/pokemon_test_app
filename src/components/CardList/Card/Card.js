@@ -4,17 +4,24 @@ import './Card.css';
 import { Button } from 'antd';
 import emptystar from './../../../images/emptystar.png';
 import goldstar from '../../../images/goldstar.png';
+import { useStore } from '../../../hooks-store/store';
 
 
 export default props => {
+    const [isOpen, setIsOpen] = useState(false);
     const [isFavourite, setIsFavourite] = useState(false);
 
     const switchFavAddFavHandler = useCallback((isFav) => {
         setIsFavourite(isFav);
     }, []);
 
+    let style = 'card-component_closed';
+    if(isOpen) {
+        style = 'card-component_opened';
+    }
+
     return (
-        <div className='card-component_closed card-component_opened'>
+        <div className={style} onClick={() => setIsOpen(prevState => !prevState)}>
             <img className='pokemon_picture' src={props.image} alt='pokemon_picture' />  
             <ul className='card-container'>
                 <li>{props.name.toUpperCase()}</li>
