@@ -4,12 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import PokemonContextProvider from './context/pokemon-context';
+import configurePokemonsStore from './hooks-store/pokemons-store';
+import configurePageInfoStore from './hooks-store/pageInfo-store';
+
+configurePokemonsStore();
+configurePageInfoStore();
 
 ReactDOM.render(
-  <PokemonContextProvider>
-    <App />
-  </PokemonContextProvider>,
+    <App />,
   document.getElementById('root')
 );
 
