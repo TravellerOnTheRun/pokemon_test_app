@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Button, Pagination, Spin } from 'antd';
 import image from './images/Pokemon.png';
 
 
 import { useStore } from './hooks-store/store';
-import { usePrevious } from './utility/custom-hooks';
 
 import Login from './components/Login/Login';
 import Menu from './components/Menu/Menu';
@@ -17,6 +16,44 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
   const [showUserProfileMenu, setShowUserProfileMenu] = useState(false);
+
+  useEffect(() => {
+    let timeout;
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return;
+    };
+    const expiryDate = new Date(localStorage.getItem('expiryDate'));
+    if (expiryDate > new Date()) {
+      const expiresIn = expiryDate.getTime() - new Date().getTime();
+      console.log('before login');
+      timeout = setTimeout(() => {
+        console.log('timeout logout');
+        dispatch('LOGOUT');
+      }, expiresIn);
+      const userId = localStorage.getItem('userId');
+      const favs = JSON.parse(localStorage.getItem('favs'));
+      const username = localStorage.getItem('username');
+      dispatch('LOGIN', { token, userId, favs, username});
+      setShowLogin(false);
+    } else {
+      console.log('before logout');
+      dispatch('LOGOUT');
+      dispatch('LOG');
+      setShowUserProfileMenu(false);
+    };
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [dispatch]);
+
+  useEffect(() => {
+    if(!state.token) {
+      setShowUserProfileMenu(false);
+      return;
+    }
+    setShowUserProfileMenu(true);
+  }, [state.token])
 
 
   const onPageChangeHandler = pg => {
@@ -60,7 +97,7 @@ function App() {
             : null
         }
         <Menu className='menu' style='menu-component_desktop' />
-        <Menu 
+        <Menu
           style='menu-component'
           openLogin={() => {
             setShowLogin(true);
@@ -68,8 +105,8 @@ function App() {
           }}
           closeMenu={() => setShowMenu(false)}
           isShown={showMenu}
-          logout={onLogoutHandler}
           showUserProfile={showUserProfileMenu}
+          logout={onLogoutHandler}
         />
         <CardList />
       </main>

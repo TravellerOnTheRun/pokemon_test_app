@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Menu.css';
 
 import LoginButton from './LoginButton/LoginButton';
@@ -19,8 +19,6 @@ export default props => {
             }
             <div className={props.style}>
                 <LoginButton className='login-button'
-                    token={props.token}
-                    logout={props.logout}
                     openLogin={props.openLogin}
                 />
                 <Filters closeMenu={props.closeMenu} />

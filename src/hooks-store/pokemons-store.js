@@ -17,13 +17,11 @@ const fetchMainVars = async () => {
         };
         types.push(newTypeObj);
     };
-    console.log('Types have been set to: ', types);
 
     const res = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=964');
     for (const pokemon of res.data.results) {
         pokemonsForSearch.push(pokemon.name);
     };
-    console.log('Pokemons have been set to: ', pokemonsForSearch);
 };
 
 fetchMainVars();
@@ -69,7 +67,8 @@ const configureStore = () => {
             };
 
             return {
-                filteredPokemons: newArray
+                filteredPokemons: newArray,
+                isLoading: false
             };
         },
         SET_TOTAL: (curState, total) => {
@@ -90,7 +89,10 @@ const configureStore = () => {
                 const pokeObj = await fetchPokesByName(p);
                 pokemonFound.push(pokeObj);
             });
-            return { filteredPokemons: pokemonFound };
+            return { filteredPokemons: pokemonFound, isLoading: false };
+        },
+        SET_IS_LOADING: (curState, isLoading) => {
+            return { isLoading };
         }
     };
 
@@ -100,8 +102,9 @@ const configureStore = () => {
         filteredPokemons: [],
         searchIsActive: false,
         typesSearchIsActive: false,
+        isLoading: false,
         total: 964,
-        types: types
+        types: types,
     });
 };
 

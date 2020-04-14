@@ -6,9 +6,11 @@ import * as serviceWorker from './serviceWorker';
 
 import configurePokemonsStore from './hooks-store/pokemons-store';
 import configurePageInfoStore from './hooks-store/pageInfo-store';
+import configureAuthStore from './hooks-store/auth-store';
 
 configurePokemonsStore();
 configurePageInfoStore();
+configureAuthStore();
 
 ReactDOM.render(
     <App />,

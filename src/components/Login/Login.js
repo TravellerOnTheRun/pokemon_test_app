@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useStore } from '../../hooks-store/store';
 import './Login.css';
 import { Form, Input, Button } from 'antd';
 
@@ -13,23 +14,33 @@ const tailLayout = {
 };
 
 export default props => {
+    const dispatch = useStore(false)[1];
     const [isSignup, setIsSignup] = useState(false);
 
     const onFinish = values => {
-        if( isSignup) {
+        console.log(values);
+        if (isSignup) {
             axios.post('http://localhost:8080/signup', values)
-            .then(res => {
-                setIsSignup(false);
-            })
-            .catch(err => console.log(err)); 
+                .then(res => {
+                    alert(res.message);
+                    setIsSignup(false);
+                })
+                .catch(err => console.log(err));
         } else {
             axios.post('http://localhost:8080/login', values)
-            .then(response => {
-                const { token, expiresIn, userId } = response.data;
-                props.storeToken(token, expiresIn, userId);
-                props.dismissLogin();
-            })
-            .catch(err => console.log(err));
+                .then(response => {
+                    console.log(response.data);
+                    const { token, expiresIn, userId, favs, username } = response.data;
+                    const expiryDate = new Date(new Date().getTime() + expiresIn);
+                    console.log(expiryDate);
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('expiryDate', expiryDate);
+                    localStorage.setItem('userId', userId);
+                    localStorage.setItem('favs', JSON.stringify(favs));
+                    localStorage.setItem('username', username);
+                    dispatch('LOGIN', { token, userId, favs, username });
+                    props.dismissLogin();
+                });
         };
     };
 
