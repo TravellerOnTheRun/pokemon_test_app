@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CardList.css';
 
 import { useStore } from '../../hooks-store/store';
 
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
+import { Button, Spin } from 'antd';
 
 import Pokemon from '../../models/pokemon';
 
@@ -38,12 +39,11 @@ export default props => {
   const [state, dispatch] = useStore();
 
   useEffect(() => {
+    dispatch('SET_IS_LOADING', true);
     if (state.typesSearchIsActive) {
       console.log(`[if]`);
-      console.log(state.currentlyFetchedPokemons);
       dispatch('FILTER_CURRENT_POKEMONS');
-      console.log(state.filteredPokemons);
-    } else if(state.searchIsActive) {
+    } else if (state.searchIsActive) {
       return;
     } else {
       console.log(`[else]`);
@@ -54,19 +54,19 @@ export default props => {
       asyncFn();
     };
   }, [
-    state.page,
     state.currentOffset,
     state.itemsPerPage,
     state.typesSearchIsActive,
-    state.currentlyFetchedPokemons,
-    state.searchIsActive
+    state.searchIsActive,
+    dispatch
   ]);
 
-  return (
+  let component = (
     <div className='cardlist-component'>
       {state.filteredPokemons.map(pokemon =>
         <Card
-          key={pokemon.id}
+          key={pokemon._id}
+          _id={pokemon._id}
           name={pokemon.name}
           types={pokemon.types}
           abilities={pokemon.abilities}
@@ -75,4 +75,19 @@ export default props => {
         />)}
     </div>
   );
+  if (state.isLoading) {
+    component = (
+      <div className='centered'>
+        <Spin size='large'/>
+      </div>
+    );
+  };
+  if (state.filteredPokemons.length === 0) {
+    component = <div className='centered'>
+      <p>No pokes found!</p>
+      <p>To see all Pokemons reload the page</p>
+    </div>
+  };
+
+  return component;
 };
